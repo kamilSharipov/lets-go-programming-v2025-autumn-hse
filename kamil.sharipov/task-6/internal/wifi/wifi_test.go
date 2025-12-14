@@ -56,7 +56,7 @@ func TestGetAddressesError(t *testing.T) {
 
 	require.Error(t, err)
 	assert.Nil(t, have)
-	assert.ErrorContains(t, err, "getting interfaces: interfaces error")
+	require.ErrorContains(t, err, "getting interfaces: interfaces error")
 
 	mock.AssertExpectations(t)
 }
@@ -95,7 +95,7 @@ func TestGetNamesError(t *testing.T) {
 
 	require.Error(t, err)
 	assert.Nil(t, have)
-	assert.ErrorContains(t, err, "getting interfaces: names error")
+	require.ErrorContains(t, err, "getting interfaces: names error")
 
 	mock.AssertExpectations(t)
 }
