@@ -54,9 +54,8 @@ func TestGetNamesQueryError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
-	require.ErrorContains(t, err, "db query: query error")
+	require.ErrorContains(t, err, "db query: "+errQueryError.Error())
 
 	require.NoError(t, mock.ExpectationsWereMet())
 }
@@ -77,7 +76,6 @@ func TestGetNamesScanError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
 	require.ErrorContains(t, err, "rows scanning")
 
@@ -98,7 +96,6 @@ func TestGetNamesRowCloseError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
 	require.ErrorContains(t, err, "rows error: ")
 
@@ -138,9 +135,8 @@ func TestGetUniqueNamesQueryError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetUniqueNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
-	require.ErrorContains(t, err, "db query: query error")
+	require.ErrorContains(t, err, "db query: "+errQueryError.Error())
 
 	require.NoError(t, mock.ExpectationsWereMet())
 }
@@ -161,7 +157,6 @@ func TestGetUniqueNamesScanError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetUniqueNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
 	require.ErrorContains(t, err, "rows scanning")
 
@@ -182,7 +177,6 @@ func TestGetUniqueNamesRowCloseError(t *testing.T) {
 	database := d.New(db)
 	have, err := database.GetUniqueNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
 	require.ErrorContains(t, err, "rows error: ")
 

@@ -54,9 +54,8 @@ func TestGetAddressesError(t *testing.T) {
 	service := w.New(mock)
 	have, err := service.GetAddresses()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
-	require.ErrorContains(t, err, "getting interfaces: interfaces error")
+	require.ErrorContains(t, err, "getting interfaces: "+errInterfacesError.Error())
 
 	mock.AssertExpectations(t)
 }
@@ -93,9 +92,8 @@ func TestGetNamesError(t *testing.T) {
 	service := w.New(mock)
 	have, err := service.GetNames()
 
-	require.Error(t, err)
 	assert.Nil(t, have)
-	require.ErrorContains(t, err, "getting interfaces: names error")
+	require.ErrorContains(t, err, "getting interfaces: "+errNamesError.Error())
 
 	mock.AssertExpectations(t)
 }
